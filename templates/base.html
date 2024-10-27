@@ -26,7 +26,7 @@
         <!-- logut code -->
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button type="submit">Logout</button><br><br>
         </form>
 
         {% else %}
