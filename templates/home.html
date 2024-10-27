@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 
-
-    {% block content %}
-    {% for post in post_list %}
-    
-        <div class="post-entry">
-            <!-- in h2 href we can use (url 'post_detail' post.id) -->
-            <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-            <p>{{ post.body }}</p>
-        </div>
-    {% endfor %}
-    {% endblock content %}
+{% block content %}
+<div class="container">
+    <div class="post-grid">
+        {% for post in post_list %}
+            <div class="post-entry">
+                <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                <p>{{ post.body|truncatewords:20 }}</p>
+                <a href="{{ post.get_absolute_url }}" class="read-more">Read More</a>
+            </div>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
